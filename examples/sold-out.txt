@@ -1,0 +1,15 @@
+
+  Agent Nakamigos Id (ANAKA)  [SOLD OUT]
+  0x2D7097E0f28Ea0fEB0b3b44c7d0ee0227d513103 · BNB Smart Chain
+
+  Minted        20000 / 20000 (100.0%)
+  Price         0.00096 BNB
+  Max/wallet    20
+  Mint open     yes
+  Owner         0x5fd092819b8171bedc571f90f443cf0b5c61f079
+  Mint fn       mint(uint256)
+  Heads up      owner can open/close minting
+  Heads up      owner can change metadata
+
+  Verdict: SOLD OUT · supply reached max supply
+

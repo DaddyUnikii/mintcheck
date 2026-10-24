@@ -1,0 +1,20 @@
+
+  FACEID.AI (FACEID)  [PAID]
+  0x19758609B4B1885B02ba64c0BeaDb436503CfcAe · BNB Smart Chain
+
+  Minted        807 / 2800 (28.8%)
+  Price         0.0013 BNB
+  Quote x1      0.0013 BNB
+  Max/wallet    10
+  You minted    1
+  Mint open     yes
+  Gate          agent-only (needs an agent ID)
+  Owner         0xe5310d5288c0f74452fd3b57cc09818b1f498eb0
+  Mint fn       mint(uint256)
+  Simulation    mint(uint256) reverts: WrongPayment()
+  Heads up      owner can change the price
+  Heads up      owner can open/close minting
+  Heads up      unrevealed: art/tiers are set at reveal
+
+  Verdict: PAID · quote for this wallet
+
