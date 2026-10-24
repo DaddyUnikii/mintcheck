@@ -1,0 +1,13 @@
+{
+  "name": "mintcheck",
+  "version": "0.1.0",
+  "description": "Zero-dependency CLI that reads an NFT mint contract and tells you if it is free, open, and safe to try.",
+  "type": "module",
+  "bin": { "mintcheck": "bin/mintcheck.js" },
+  "main": "src/check.js",
+  "scripts": { "test": "node --test test/mintcheck.test.js" },
+  "engines": { "node": ">=18" },
+  "keywords": ["nft", "mint", "erc721", "evm", "bsc", "cli", "web3"],
+  "author": "Unikii (https://github.com/DaddyUnikii)",
+  "license": "MIT"
+}
