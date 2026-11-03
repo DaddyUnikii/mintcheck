@@ -74,6 +74,9 @@ node bin/mintcheck.js 0xContract --json
 
 # hash a function signature
 node bin/mintcheck.js --selector "mint(uint256)"     # 0xa0712d68
+
+# print the installed version
+node bin/mintcheck.js --version                     # 0.1.0
 ```
 
 Or install globally: `npm i -g .` then run `mintcheck <contract>`.

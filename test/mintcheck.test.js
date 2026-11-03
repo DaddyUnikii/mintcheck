@@ -1,5 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { keccak256, selector } from '../src/keccak.js';
 import { decodeString, decodeUint, decodeBool, formatEther, bytecodeSelectors, encodeAddress } from '../src/abi.js';
 import { inspect, verdict, revertReason } from '../src/check.js';
@@ -92,4 +94,12 @@ test('revertReason decodes Error(string)', () => {
 test('inspect rejects addresses with no code', async () => {
   const rpc = { getCode: async () => '0x', call: async () => null, send: async () => null };
   await assert.rejects(inspect(rpc, '0x' + '3'.repeat(40)), /no contract code/);
+});
+
+test('--version and -v print the package version', () => {
+  const { version } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const bin = new URL('../bin/mintcheck.js', import.meta.url).pathname;
+  for (const flag of ['--version', '-v']) {
+    assert.equal(execFileSync(process.execPath, [bin, flag], { encoding: 'utf8' }).trim(), version);
+  }
 });
