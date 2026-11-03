@@ -3,6 +3,9 @@ import { inspect } from '../src/check.js';
 import { createRpc, CHAINS } from '../src/rpc.js';
 import { formatEther } from '../src/abi.js';
 import { selector } from '../src/keccak.js';
+import { readFileSync } from 'node:fs';
+
+const VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
 
 const HELP = `mintcheck - is this NFT mint free, open, and safe to try?
 
@@ -17,6 +20,7 @@ Options
   --qty <n>          quantity to price / simulate (default: 1)
   --simulate         dry-run the mint with eth_call from --wallet (value 0, nothing is sent)
   --json             machine-readable output
+  -v, --version      print the version and exit
   -h, --help         show this help
 
 Read-only: mintcheck never signs or sends a transaction.`;
@@ -27,6 +31,7 @@ function parse(argv) {
     const a = argv[i];
     const next = () => { if (argv[i + 1] === undefined) throw new Error(`${a} needs a value`); return argv[++i]; };
     if (a === '-h' || a === '--help') o.help = true;
+    else if (a === '-v' || a === '--version') o.version = true;
     else if (a === '--json') o.json = true;
     else if (a === '--simulate') o.simulate = true;
     else if (a === '--chain') o.chain = next();
@@ -77,6 +82,7 @@ function render(r, chain) {
 async function main() {
   let o;
   try { o = parse(process.argv.slice(2)); } catch (e) { console.error(`error: ${e.message}\n\n${HELP}`); process.exit(2); }
+  if (o.version) { console.log(VERSION); return; }
   if (o.help) { console.log(HELP); return; }
   if (o.selector) { console.log(`0x${selector(o.selector)}  ${o.selector}`); return; }
   if (!o.contract || !/^0x[0-9a-fA-F]{40}$/.test(o.contract)) { console.error(`error: give a contract address\n\n${HELP}`); process.exit(2); }
